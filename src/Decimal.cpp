@@ -25,7 +25,17 @@ Decimal::Decimal(const std::initializer_list<unsigned char> &t) {
 
 Decimal::Decimal(const std::string &t) {
     size_t ind = 0;
-    for (size_t i = t.length(); i > 0; --i) {
+    if (t.empty()) {
+        throw std::invalid_argument("String is empty!");
+    }
+    size_t start = 0;
+    while (start < t.length() && t[start] == '0') {
+        ++start;
+    }
+    if (start == t.length()) {
+        spis.PushItem('0');
+    }
+    for (size_t i = t.length(); i > start; --i) {
         if (t[i - 1] < '0' || t[i - 1] > '9') {
             throw std::out_of_range("Only 0 - 9 numbers");
         }
@@ -52,6 +62,10 @@ void Decimal::Print() {
         std::cout << GetItem(i - 1);
     }
     std::cout << std::endl;
+}
+
+void Decimal::Reserve(size_t n) {
+    spis.Reserve(n);
 }
 
 Decimal Decimal::Add(const Decimal &num) const {
