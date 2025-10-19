@@ -1,13 +1,5 @@
 #pragma once
 
-#include <cstddef>
-#include <exception>
-#include <initializer_list>
-#include <iostream>
-#include <stdexcept>
-#include <string>
-#include <system_error>
-
 class Array {
 private:
     size_t size;
