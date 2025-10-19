@@ -1,11 +1,7 @@
 #pragma once
 
 #include "Array.h"
-#include <cstddef>
-#include <initializer_list>
-#include <ostream>
-#include <stdexcept>
-#include <string>
+
 
 class Decimal {
 private:
