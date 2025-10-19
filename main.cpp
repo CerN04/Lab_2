@@ -1,3 +1,12 @@
+#include <cstddef>
+#include <exception>
+#include <initializer_list>
+#include <iostream>
+#include <ostream>
+#include <stdexcept>
+#include <string>
+#include <system_error>
+
 #include "Decimal.h"
 
 int main() {
