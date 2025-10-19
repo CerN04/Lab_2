@@ -2,8 +2,7 @@
 
 Array::Array() : size(0), capacity(1) { data = new unsigned char[capacity]; }
 
-Array::Array(const size_t &n, unsigned char t) : size(n), capacity(n) {
-    data = new unsigned char[capacity];
+Array::Array(const size_t &n, unsigned char t) : size(n), capacity(n), data(new unsigned char[n]){
     for (size_t i = 0; i < size; ++i) {
         data[i] = t;
     }
@@ -12,9 +11,8 @@ Array::Array(const size_t &n, unsigned char t) : size(n), capacity(n) {
 Array::Array(const std::initializer_list<unsigned char> &t) : size(t.size()), capacity(t.size()) {
     data = new unsigned char[capacity];
     size_t ind = 0;
-    for (const unsigned char *i = t.begin(); i != t.end(); ++i) {
+    for (const unsigned char *i = t.begin(); size_t ind = 0, i != t.end(); ++i, ++ind) {
         data[ind] = *i;
-        ++ind;
     }
 }
 
@@ -41,10 +39,7 @@ Array::Array(Array &&other) noexcept : size(other.size), capacity(other.capacity
 }
 
 Array::~Array() noexcept {
-    size = 0;
-    capacity = 0;
     delete[] data;
-    data = nullptr;
 }
 
 void Array::Resize(size_t new_capacity) {
