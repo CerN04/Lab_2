@@ -1,7 +1,8 @@
-#include "Decimal.h"
 #include <gtest/gtest.h>
 #include <sstream>
 #include <string>
+
+#include "Decimal.h"
 
 std::string DecimalToString(const Decimal &d) { // Всопмогательная ф-я
     std::string result;
