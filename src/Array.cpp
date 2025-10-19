@@ -56,6 +56,19 @@ void Array::Resize(size_t new_capacity) {
     }
 }
 
+void Array::Reserve(size_t n) {
+    if (n <= capacity) {
+        return;
+    }
+    unsigned char* new_data = new unsigned char[n];  
+    for (size_t i = 0; i < size; ++i) {
+        new_data[i] = data[i];
+    }
+    delete[] data;
+    data = new_data;
+    capacity = n;
+}
+
 unsigned char Array::GetItem(size_t i) const {
     if (i >= size) {
         throw std::out_of_range("Wrong index (OoR)");
