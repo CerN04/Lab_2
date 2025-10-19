@@ -67,13 +67,14 @@ void Array::PushItem(unsigned char t) {
     if (size == capacity) {
         Resize(capacity == 0 ? 1 : capacity * 2);
     }
-    data[size] = t;
-    ++size;
+    data[size++] = t;
 }
 
 void Array::PopItem() {
     if (size > 0) {
         --size;
+    } else {
+        throw std::out_of_range("PopError: array is empty!");
     }
 }
 
